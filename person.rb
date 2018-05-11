@@ -64,7 +64,6 @@ class Person
     puts "How much would you like to bet?"
     bet = gets.to_f
     roulette = Roulette.new(bet)
-    puts roulette
   end
 
 
