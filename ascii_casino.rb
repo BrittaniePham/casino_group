@@ -1,5 +1,8 @@
 
+class Banner
 
+
+  def initialize
        
                  banner = %q(
 
@@ -44,4 +47,6 @@
 
 puts banner
 
+  end
 
+end

@@ -1,12 +1,14 @@
 require_relative 'wallet'
 require_relative 'casino_war'
 require_relative 'roulette'
+require_relative 'ascii_casino'
 require 'pry'
 
 class Person
   attr_accessor :person_wallet 
 
   def initialize
+    Banner.new
     @person_wallet = Wallet.new
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     puts "You find yourself in a casino and you have a massive gambling problem"
