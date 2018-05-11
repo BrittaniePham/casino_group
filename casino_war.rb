@@ -10,23 +10,31 @@ class CasinoWar
     draw_2_cards
   end
 
+  def welcome
+    puts "===== Welcome to Casino War ====="
+    puts
+  end
+
   def tie
-    puts "IT'S A TIE! You both pulled the same value!"
-    puts "enter 1 to go to war or enter 0 to surrender"
+    puts "IT'S A TIE! You both pulled the same value!\n"
+    puts "--enter 1 to go to war and double the stakes"
+    puts "--enter 0 to surrender and lose only half of what you bet"
     choice = gets.to_i
     if choice == 1
       go_to_war
     elsif choice == 0 
       surrender
     else 
-      puts "Not a valid option, try again"
+      puts "Not a valid option, try again\n"
       tie
     end
   end
 
   def surrender() #bet parameter
-    # @half = @bet / 2
-    # total = @wallet - @half
+    @half = @bet / 2
+    @wallet = @wallet - @half
+    
+    puts "You surrendered and lost $#{@half}. You now have $#{@wallet} left"
   end
 
   def go_to_war
@@ -58,11 +66,6 @@ class CasinoWar
     end
   end
 
-  def welcome
-    puts "===== Welcome to Casino War ====="
-    puts
-  end
-
   def draw_2_cards
     deck1 = Deck.new
     @player_card = deck1.cards.shuffle.sample
@@ -76,21 +79,17 @@ class CasinoWar
 
   def value
     case 
-    when @player_card.rank == 'A'
+    when @player_card.rank == 'A' && @dealer_card.rank == 'A'
       @player_card.rank = 1 
-    when @dealer_card.rank == 'A'
       @dealer_card.rank = 1 
-    when @player_card.rank == 'J'
+    when @player_card.rank == 'J' && @dealer_card.rank == 'J'
       @player_card.rank = 11 
-    when @dealer_card.rank == 'J'
       @dealer_card.rank = 11
-    when @player_card.rank == 'Q'
+    when @player_card.rank == 'Q' &&  @dealer_card.rank == 'Q'
       @player_card.rank = 12
-    when @dealer_card.rank == 'Q'
       @dealer_card.rank = 12
-    when @player_card.rank == 'K'
+    when @player_card.rank == 'K' && @dealer_card.rank == 'K'
       @player_card.rank = 13
-    when @dealer_card.rank == 'K'
       @dealer_card.rank = 13
     end
   end
