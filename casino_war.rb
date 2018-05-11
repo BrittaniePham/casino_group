@@ -136,4 +136,4 @@ class CasinoWar
 end
 
 #run ruby person.rb to test when this is gone!
-CasinoWar.new(10) #erase when done
+#erase when done
