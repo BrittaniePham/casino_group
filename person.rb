@@ -13,7 +13,7 @@ class Person
     puts "You currently have $100 in your pocket"
     puts "Are you ready to begin? Y/N"
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    gets.strip == "Y" ? choose_game : (puts "K let's start over" ; initialize)
+    gets.strip.downcase == "y" ? choose_game : (puts "K let's start over" ; initialize)
 
   end
 
@@ -53,14 +53,14 @@ class Person
   def play_casino_war
     puts "How much would you like to bet?"
     bet = gets.to_f
-    casino_war_game = CasinoWar.new(bet)
+    casino_war_game = CasinoWar.new(5)
 
   end
 
   def play_roulette
     puts "How much would you like to bet?"
     bet = gets.to_f
-    roulette = Roulette.new(bet)
+    roulette = Roulette.new
   end
 
 
