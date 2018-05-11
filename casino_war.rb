@@ -55,14 +55,12 @@ class CasinoWar
     puts "Your #{@player_card.rank} of #{@player_card.suit} is greater than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Congrats! You won this round"
     #TODO WALLET + BET (call clatyons win method)
-    puts "You currently have ... " #TODO PRINT AMOUNT IN WALLET
   end
 
   def lose
     puts "Your #{@player_card.rank} of #{@player_card.suit} is less than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Sorry! You lost this round"
     #TODO WALLET - BET (call clatyons lose method)
-    puts "You currently have ... " #TODO PRINT AMOUNT IN WALLET
   end
 
   def compare_cards
@@ -135,5 +133,5 @@ class CasinoWar
 
 end
 
-#@person_wallet.show_wallet
-start = CasinoWar.new
+#run ruby person.rb to test when this is gone!
+CasinoWar.new(10) #erase when done
