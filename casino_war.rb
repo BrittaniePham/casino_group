@@ -44,8 +44,8 @@ class CasinoWar
 
   def win_war
     puts "CONGRATS! YOU'VE WON THE WAR! YOU'VE WON DOUBLE $$"
-    @player_money = @player_money + @double
-    puts "You gained $#{@double}!"
+    @player_money = @player_money + @bet
+    puts "You gained $#{@bet}!"
   end
 
   def win
