@@ -53,7 +53,7 @@ class Person
   def play_casino_war
     puts "How much would you like to bet?"
     bet = gets.to_f
-    casino_war_game = CasinoWar.new(5)
+    casino_war_game = CasinoWar.new(bet)
     puts casino_war_game.return_amount
 
   end
@@ -61,7 +61,7 @@ class Person
   def play_roulette
     puts "How much would you like to bet?"
     bet = gets.to_f
-    roulette = Roulette.new
+    roulette = Roulette.new(bet)
     puts roulette
   end
 

@@ -137,5 +137,5 @@ end
 
 #run ruby person.rb to test when this is gone!
 
-CasinoWar.new(10) #erase when y'all test yours. this is just here for Britt to test
+#erase when y'all test yours. this is just here for Britt to test
 
