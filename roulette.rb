@@ -5,6 +5,7 @@ attr_accessor :place_bet
 
 def initialize(bet)
   @bet = bet
+  @player_money = 0
   @index = [0, 00, 2, 4, 7, 9, 10, 12, 15, 17, 18, 20, 23, 25, 26, 28, 31, 33, 34, 36, 1, 3, 5, 6, 8, 11, 13, 14, 16, 19, 21, 22, 24, 27, 29, 30, 32, 35]
   @color = ['Red', 'Black']
   play
@@ -42,10 +43,14 @@ def number
     num_bet = gets.to_i
   if num_bet == @index.sample
     puts "Incredible, you win! You are the roulette master!"
-    @bet += @bet
+    @bet = @bet + 10
+    @player_money = @player_money + @bet
+    puts "You just won 10 moneys!"
   else
-    puts "Ouch wah-wah! You have lost everything!"
-    @bet -= @bet
+    puts "Ouch wah-wah!"
+    @bet = @bet - 10
+    @player_money = @player_money - @bet
+    puts "You just lost 10 money units! That sucks!"
   end
 end
 
@@ -53,10 +58,14 @@ end
 def color
   if @colorchoice == @color.sample
     puts "You're a winner!"
-    @bet += @bet
+    @bet = @bet * 3
+    @player_money = @player_money + @bet
+    puts "Whoa!! Make it Rain!! You just tripled your cash!!"
   else
     puts "You have lost pretty horrifically, sorry."
-    @bet -= @bet
+    @bet = @bet / 3
+    @player_money = @player_money - @bet
+    puts "Like, damn.  You just lost 2/3 of what you had."
   end
 end
 
