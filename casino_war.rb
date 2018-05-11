@@ -1,11 +1,10 @@
 require_relative 'cards'
-require_relative 'wallet'
 
 class CasinoWar
   attr_accessor :bet
   def initialize(bet)
     @bet = bet
-    @wallet = 100
+    @player_money = 0 # player has not won or lost anything
     welcome
     puts "*cards are shuffled*"
     draw_2_cards
@@ -31,11 +30,10 @@ class CasinoWar
     end
   end
 
-  def surrender #bet parameter
+  def surrender
     @half = @bet / 2
-    @wallet = @wallet - @half
-    
-    puts "You surrendered and lost $#{@half}. You now have $#{@wallet} left"
+    @player_money = @player_money - @half
+    puts "You surrendered and lost $#{@half}."
   end
 
   def go_to_war
@@ -46,21 +44,23 @@ class CasinoWar
 
   def win_war
     puts "CONGRATS! YOU'VE WON THE WAR! YOU'VE WON DOUBLE $$"
-    @wallet = @wallet + @double
-    puts "You gained $#{@double}. You currently have $#{@wallet}"
+    @player_money = @player_money + @double
+    puts "You gained $#{@double}!"
   end
 
 
   def win
     puts "Your #{@player_card.rank} of #{@player_card.suit} is greater than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Congrats! You won this round"
-    #TODO WALLET + BET (call clatyons win method)
+    @player_money = @player_money + @bet
+    puts "You gained $#{@bet}!"
   end
 
   def lose
     puts "Your #{@player_card.rank} of #{@player_card.suit} is less than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Sorry! You lost this round"
-    #TODO WALLET - BET (call clatyons lose method)
+    @player_money = @player_money - @bet
+    puts "You lost $#{@bet} ..."
   end
 
   def compare_cards
@@ -130,7 +130,6 @@ class CasinoWar
       @dealer_card.rank = 13
     end
   end
-
 end
 
 #run ruby person.rb to test when this is gone!
