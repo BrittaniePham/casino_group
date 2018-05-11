@@ -1,9 +1,11 @@
 class Wallet
   attr_accessor :wallet
+
+  #initialize new wallet when a new player enters the floor, start them at $100
   def initialize
     @wallet = 100.00
   end
-
+  #show the current amount in player's wallet
   def show_wallet
     puts "Your current balance is #{@wallet}"
   end

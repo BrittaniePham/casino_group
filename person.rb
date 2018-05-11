@@ -1,5 +1,6 @@
 require_relative 'wallet'
 require_relative 'casino_war'
+require_relative 'roulette'
 require 'pry'
 
 class Person
@@ -16,13 +17,14 @@ class Person
 
   end
 
-
+ #send people here after they play a game, show them their wallet and then let them choose next game
   def casino_floor
     puts "Welcome back!"
     @person_wallet.show_wallet
     choose_game
   end
 
+  #This menu will pop up anytime the user is sent back to the 'casino-floor', it will allow them to choose the game they want to play
   def choose_game
     puts "Please choose from the following options:"
     puts "1) Roulette"
@@ -34,6 +36,7 @@ class Person
     answer = gets.strip.to_i
     case answer
     when 1
+      play_roulette
     when 2
       play_casino_war
     when 3
@@ -52,6 +55,12 @@ class Person
     bet = gets.to_f
     casino_war_game = CasinoWar.new(bet)
 
+  end
+
+  def play_roulette
+    puts "How much would you like to bet?"
+    bet = gets.to_f
+    roulette = Roulette.new(bet)
   end
 
 
