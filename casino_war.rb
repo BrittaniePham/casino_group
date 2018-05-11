@@ -31,14 +31,14 @@ class CasinoWar
   end
 
   def surrender
-    @half = @bet / 2
-    @player_money = @player_money - @half
-    puts "You surrendered and lost $#{@half}."
+    @bet = @bet / 2
+    @player_money = @player_money - @bet
+    puts "You surrendered and lost $#{@bet}."
   end
 
   def go_to_war
     puts "\nYou've gone to war!!!"
-    @double = @bet * 2
+    @bet = @bet * 2
     draw_2_cards
   end
 
