@@ -1,4 +1,5 @@
 require_relative 'wallet'
+require_relative 'casino_war'
 require 'pry'
 
 class Person
@@ -18,7 +19,7 @@ class Person
 
   def casino_floor
     puts "Welcome back!"
-    person_wallet.show_wallet
+    @person_wallet.show_wallet
     choose_game
   end
 
@@ -34,6 +35,7 @@ class Person
     case answer
     when 1
     when 2
+      play_casino_war
     when 3
     when 4
     when 5
@@ -43,6 +45,13 @@ class Person
       @person_wallet.final_wallet
       exit
     end
+  end
+
+  def play_casino_war
+    puts "How much would you like to bet?"
+    bet = gets.to_f
+    casino_war_game = CasinoWar.new(bet)
+
   end
 
 
