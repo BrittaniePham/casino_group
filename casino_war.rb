@@ -48,7 +48,6 @@ class CasinoWar
     puts "You gained $#{@double}!"
   end
 
-
   def win
     puts "Your #{@player_card.rank} of #{@player_card.suit} is greater than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Congrats! You won this round"
@@ -61,6 +60,10 @@ class CasinoWar
     puts "Sorry! You lost this round"
     @player_money = @player_money - @bet
     puts "You lost $#{@bet} ..."
+  end
+
+  def return_amount
+    @player_money
   end
 
   def compare_cards
