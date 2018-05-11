@@ -1,7 +1,8 @@
 require_relative 'cards'
+require_relative 'wallet'
 
 class CasinoWar
-
+  attr_accessor :person_wallet
   def initialize #bet
     @wallet = 100
     @bet = 10
@@ -38,30 +39,43 @@ class CasinoWar
   end
 
   def go_to_war
+    puts "\nYou've gone to war!!!"
+    @double = @bet * 2
+    draw_2_cards
   end
+
+  def win_war
+    puts "CONGRATS! YOU'VE WON THE WAR! YOU'VE WON DOUBLE $$"
+    @wallet = @wallet + @double
+    puts "You gained $#{@double}. You currently have $#{@wallet}"
+  end
+
 
   def win
     puts "Your #{@player_card.rank} of #{@player_card.suit} is greater than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Congrats! You won this round"
-    #TODO WALLET + BET
+    #TODO WALLET + BET (call clatyons win method)
     puts "You currently have ... " #TODO PRINT AMOUNT IN WALLET
   end
 
   def lose
     puts "Your #{@player_card.rank} of #{@player_card.suit} is less than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
     puts "Sorry! You lost this round"
-    #TODO WALLET - BET
+    #TODO WALLET - BET (call clatyons lose method)
     puts "You currently have ... " #TODO PRINT AMOUNT IN WALLET
   end
 
   def compare_cards
-    value 
+
+    value_player_card
+    value_dealer_card
 
     if (@player_card.rank.to_i > @dealer_card.rank.to_i)
       win
     elsif (@player_card.rank.to_i < @dealer_card.rank.to_i)
       lose
     elsif (@player_card.rank.to_i == @dealer_card.rank.to_i)
+      value_tie
       tie
     end
   end
@@ -77,23 +91,49 @@ class CasinoWar
     compare_cards
   end
 
-  def value
-    case 
-    when @player_card.rank == 'A' && @dealer_card.rank == 'A'
+  def value_tie
+    if @player_card.rank == 'A' && @dealer_card.rank == 'A'
       @player_card.rank = 1 
       @dealer_card.rank = 1 
-    when @player_card.rank == 'J' && @dealer_card.rank == 'J'
+    elsif @player_card.rank == 'J' && @dealer_card.rank == 'J'
       @player_card.rank = 11 
       @dealer_card.rank = 11
-    when @player_card.rank == 'Q' &&  @dealer_card.rank == 'Q'
+    elsif @player_card.rank == 'Q' &&  @dealer_card.rank == 'Q'
       @player_card.rank = 12
       @dealer_card.rank = 12
-    when @player_card.rank == 'K' && @dealer_card.rank == 'K'
+    elsif @player_card.rank == 'K' && @dealer_card.rank == 'K'
       @player_card.rank = 13
+      @dealer_card.rank = 13
+    end
+  end
+
+  def value_player_card
+    case @player_card.rank 
+    when 'A'
+      @player_card.rank = 1 
+    when 'J'
+      @player_card.rank = 11 
+    when 'Q'
+      @player_card.rank = 12
+    when 'K'
+      @player_card.rank = 13
+    end
+  end
+
+  def value_dealer_card
+    case @dealer_card.rank 
+    when 'A'
+      @dealer_card.rank = 1 
+    when 'J'
+      @dealer_card.rank = 11 
+    when 'Q'
+      @dealer_card.rank = 12
+    when 'K'
       @dealer_card.rank = 13
     end
   end
 
 end
 
+#@person_wallet.show_wallet
 start = CasinoWar.new
