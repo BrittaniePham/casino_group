@@ -2,10 +2,10 @@ require_relative 'cards'
 require_relative 'wallet'
 
 class CasinoWar
-  attr_accessor :person_wallet
-  def initialize #bet
+  attr_accessor :bet
+  def initialize(bet)
+    @bet = bet
     @wallet = 100
-    @bet = 10
     welcome
     puts "*cards are shuffled*"
     draw_2_cards
@@ -31,7 +31,7 @@ class CasinoWar
     end
   end
 
-  def surrender() #bet parameter
+  def surrender #bet parameter
     @half = @bet / 2
     @wallet = @wallet - @half
     
