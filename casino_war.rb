@@ -37,7 +37,7 @@ class CasinoWar
   end
 
   def go_to_war
-    puts "\nYou've gone to war!!!"
+    puts "\nYOU'VE GONE TO WAR!!!"
     @bet = @bet * 2
     draw_2_cards
   end
@@ -57,7 +57,7 @@ class CasinoWar
 
   def lose
     puts "Your #{@player_card.rank} of #{@player_card.suit} is less than the dealer's #{@dealer_card.rank} of #{@dealer_card.suit}"
-    puts "Sorry! You lost this round"
+    puts "Sorry! Unfortunately, you didn't win this round"
     @player_money = @player_money - @bet
     puts "You lost $#{@bet} ..."
   end
@@ -136,4 +136,6 @@ class CasinoWar
 end
 
 #run ruby person.rb to test when this is gone!
-#erase when done
+
+CasinoWar.new(10) #erase when y'all test yours. this is just here for Britt to test
+
