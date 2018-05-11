@@ -54,6 +54,7 @@ class Person
     puts "How much would you like to bet?"
     bet = gets.to_f
     casino_war_game = CasinoWar.new(5)
+    puts casino_war_game.return_amount
 
   end
 
