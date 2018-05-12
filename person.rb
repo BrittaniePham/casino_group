@@ -52,6 +52,9 @@ class Person
     when 6
       @person_wallet.final_wallet
       exit
+    else
+      puts "That is not a valid choice. Please choose again.\n\n"
+      choose_game
     end
   end
 
