@@ -21,6 +21,7 @@ class Person
 
  #send people here after they play a game, show them their wallet and then let them choose next game
   def casino_floor
+    puts
     puts "Welcome back!"
     @person_wallet.show_wallet
     choose_game
@@ -42,7 +43,9 @@ class Person
     when 2
       play_casino_war
     when 3
+      puts "under construction"
     when 4
+      puts "under construction"
     when 5
       @person_wallet.show_wallet
       choose_game
@@ -54,19 +57,43 @@ class Person
 
   def play_casino_war
     puts "How much would you like to bet?"
-    bet = gets.to_f
-    casino_war_game = CasinoWar.new(bet)
-    puts casino_war_game.return_amount
+    @bet = gets.to_f
+    bet_condition
 
+    casino_war_game = CasinoWar.new(@bet)
+    update_wallet = casino_war_game.return_amount
+    @person_wallet.win_wallet(update_wallet)
+    play_casino_war_again
+  end
+
+  def play_casino_war_again
+    puts "Would you like to play Casino War again? Y/N"
+    play_again = gets.strip.downcase
+    if play_again == 'y'
+      play_casino_war
+    elsif play_again == 'n'
+      casino_floor
+    else
+      puts "invalid choice, please choose again."
+    end
   end
 
   def play_roulette
     puts "How much would you like to bet?"
-    bet = gets.to_f
-    roulette = Roulette.new(bet)
+
+    @bet = gets.to_f
+    roulette = Roulette.new(@bet)
+    puts roulette
+
   end
 
-
+  def bet_condition
+    if @bet > @person_wallet.wallet
+      puts "Sorry, you don't have that much money left..."
+      puts "Please bet a smaller amount\n\n" 
+      play_casino_war 
+    end
+  end
 
 
 end
