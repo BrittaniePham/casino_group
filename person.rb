@@ -3,6 +3,7 @@ require_relative 'casino_war'
 require_relative 'roulette'
 require_relative 'ascii_casino'
 require_relative 'slot_machine'
+require_relative 'blackjack'
 require 'pry'
 
 class Person
@@ -33,7 +34,7 @@ class Person
     puts "Please choose from the following options:"
     puts "1) Roulette"
     puts "2) Casino War"
-    puts "3) Black or Red"
+    puts "3) Blackjack"
     puts "4) $1 Slots"
     puts "5) Show wallet balance"
     puts "6) Cash out and leave"
@@ -44,7 +45,7 @@ class Person
     when 2
       play_casino_war
     when 3
-      puts "under construction"
+      play_blackjack
     when 4
       play_slots
     when 5
@@ -103,6 +104,27 @@ class Person
     else
       puts "Invalid choice, please choose again."
       play_roulette_again
+    end
+  end
+
+  def play_blackjack
+    puts "How much would you like to bet?"
+    @bet = gets.to_f
+    blackjack = BlackJack.new(@bet)
+    @person_wallet.win_wallet(blackjack.return_money)
+    play_blackjack_again
+  end
+
+  def play_blackjack_again
+    puts "Would you like to play BlackJack again? Y/N"
+    play_again = gets.strip.downcase
+    if play_again == 'y'
+      play_blackjack
+    elsif play_again == 'n'
+      casino_floor
+    else 
+      puts "Invalid choice, please choose again."
+      play_blackjack_again
     end
   end
 
