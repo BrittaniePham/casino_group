@@ -88,6 +88,7 @@ class Person
 
     @bet = gets.to_f
     roulette = Roulette.new(@bet)
+    @person_wallet.win_wallet(roulette.net_money)
     play_roulette_again
 
   end
