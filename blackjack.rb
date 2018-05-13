@@ -113,8 +113,8 @@ class BlackJack
       puts "Blackjack!"
       dealer_turn
     elsif @score > 21
-      puts "Bust, dealer's turn"
-      dealer_turn
+      puts "Player has busted"
+      lose
     else
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       puts "Your current score is #{@score}, would you like to hit or stay? H/S"
