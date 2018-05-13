@@ -1,11 +1,13 @@
 require_relative 'cards'
 
 class BlackJack
-  attr_accessor :blackjack_deck,:cards_drawn, :dealer_score, :dealer_cards_drawn, :bet
+  attr_accessor :blackjack_deck,:cards_drawn, :dealer_score, :dealer_cards_drawn, :bet, :ace_count, :dealer_ace_count
 
 
   def initialize(bet)
     @bet = bet
+    @ace_count = 0
+    @dealer_ace_count = 0
     @dealer_cards_drawn = 0
     @cards_drawn = 0
     @dealer_score = 0
@@ -21,8 +23,13 @@ class BlackJack
     rank = card_drawn.rank
     case rank
     when 'A'
-      puts "Would you like this ace to count as 1 or 11?"
-      @card_value = give_value_to_ace
+      
+      if @score < 11
+        @card_value = 11
+        @ace_count += 1
+      else
+        @card_value = 1
+      end
     when 'J', 'Q', 'K'
       @card_value = 10
     else
@@ -45,8 +52,10 @@ class BlackJack
     puts "The dealer has drawn a #{rank}"
     case rank
     when 'A'
+      
       if @dealer_score < 11
         @dealer_card_value = 11
+        @dealer_ace_count += 1
       else 
         @dealer_card_value = 1
       end
@@ -67,12 +76,13 @@ class BlackJack
       puts "Dealer busted!"
       win 
     elsif @dealer_score == @score && @dealer_score > 16
+      dealer_score
       tie
     elsif @dealer_score > 16 && @dealer_score < @score
       dealer_turn
-    else 
-      dealer_score   
+    else    
       if @dealer_score > @score && @dealer_score < 22
+      dealer_score
       lose
     end
     end
@@ -97,10 +107,18 @@ class BlackJack
 
   def add_to_score
     @score += @card_value
+    if @score > 21 && @ace_count > 0
+      @score -= 10
+      @ace_count -= 1
+    end
   end
 
   def add_to_dealer_score
     @dealer_score += @dealer_card_value
+    if @dealer_score > 21 && @dealer_ace_count > 0
+      @dealer_score -= 10
+      @dealer_ace_acount -= 1
+    end
   end
 
   def show_score
@@ -139,7 +157,7 @@ class BlackJack
 
   def tie
     puts "You have tied, take your money back"
-    @bet = bet
+    @bet -= bet
   end
 
   def return_money
