@@ -86,7 +86,6 @@ class Person
 
     @bet = gets.to_f
     roulette = Roulette.new(@bet)
-    puts roulette
 
   end
 
