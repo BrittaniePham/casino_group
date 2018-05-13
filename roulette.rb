@@ -13,21 +13,36 @@ end
 
 def play
   puts 
-  puts "************** Roulette *****************"
+  puts "=========================================="
+  puts 
+  puts "******************************************"
+  puts 
+  puts "=========================================="
+  puts 
+  puts "************     Roulette    *************"
+  puts 
+  puts "=========================================="
+  puts 
+  puts "******************************************"
+  puts
+  puts "=========================================="
   puts
   puts "Try your luck, spin the wheel, and prepare for big wins!"
   puts "Or maybe you'll lose it all because of your poor life choices!"
   puts
-  puts '========================================='
+  puts '=========================================='
+  puts
   place_bet
 end
 
 def place_bet
   puts "How do you want to bet?"
+  puts
   puts "1) Outside"
   puts "2) Inside"
   puts
-  puts "Outside bets have better odds, but lower payouts.  Inside bets are pretty risky,\nthey have sky high returns but devastating loses."
+  puts "Outside bets have better odds, but lower payouts.  Inside bets are pretty risky,\nthey have sky high returns but devastating losses."
+  puts
   print "> "
   bet_choice = gets.to_i
   if bet_choice == 1
@@ -38,11 +53,15 @@ def place_bet
 end
 
 def outside
+  puts
   puts "========================================"
+  puts
   puts "Let's place some outside bets!"
+  puts
   puts "You can split your odds evenly or play the dozens."
   puts "1) Red or Black ----- odds = 50/50"
   puts "2) Play the Dozens -- odds = 2 to 1"
+  puts
   print "> "
   outside_bet = gets.to_i
   if outside_bet == 1
@@ -53,13 +72,17 @@ def outside
 end
 
 def inside
+  puts
   puts "=========================================="
+  puts
   puts "Let's place some inside bets!"
   puts 
   puts "1) Straight up Bet ------- odds = 37 to 1"
   puts "2) Split Bet ------------- odds = 19 to 1"
   puts "3) Street Bet ------------ odds = 13 to 1"
   puts "4) Corner Bet ------------ odds = 10 to 1"
+  puts
+  print "> "
   bet_choice = gets.to_i
   case bet_choice
     when 1
@@ -81,9 +104,13 @@ end
 def color
   puts
   puts "===================== Red or Black ===================="
-  puts "This is the classic bet in roulette, your odds are 50/50, what's it gonna be?"
+  puts
+  puts "This is the classic bet in roulette.  Your odds are 50/50, what's it gonna be?"
+  puts
   puts "1) Red"
   puts "2) Black"
+  puts
+  print "> "
   bet1 = gets.to_i
   case bet1
     when 1
@@ -91,12 +118,14 @@ def color
       puts "------------------"
       puts "All on red , baby!"
       puts "------------------"
+      puts
       win_or_lose
     when 2
       @colorchoice = 'Black'
       puts "-------------------"
       puts "All on black, baby!"
       puts "-------------------"
+      puts
       win_or_lose
     else
       puts "Invalid Choice"
@@ -119,6 +148,7 @@ end
 def color_win
   @bet = @bet + 20
   @player_money = @player_money + @bet
+  puts
   puts "$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$$ CASH $$"
   puts "Cha-Ching!  You're a winner!"
   puts "You just won 20 moneys! You're up to $#{@bet}!"
@@ -129,6 +159,7 @@ end
 def color_lose
   @bet = @bet - 20
   @player_money = @player_money - @bet
+  puts
   puts "* * :( * * :( * * :( * * :( * * :( * * :( * * :( * * :( * * :( * * :( * *"
   puts "Ouch! You just lost 20 currency units! That sucks!"
   puts "You're down to $#{@bet}."
@@ -144,6 +175,7 @@ def dozens
   puts
   puts "On a Roulette table, the 36 pockets on the wheel are represented on a grid, divided into 3 groups of 12."
   puts "You pick a group, and if the ball lands on the number within your range, you win!"
+  puts
   puts "1) Low Dozen (1 -12)"
   puts "2) Middle Dozen (13 -24)"
   puts "3) High Dozen (25 - 36)"
@@ -184,6 +216,7 @@ def dozen_win
   @bet = @bet * 0.6
   @bet.to_i
   @player_money = @player_money + @bet
+  puts
   puts "You won $#{@bet}!"
 end
 
@@ -191,6 +224,7 @@ def dozen_lose
   @bet = @bet / 0.6
   @bet.to_i
   @player_money = @player_money - @bet
+  puts
   puts "You lost, sucka! You've got $#{@bet} now!"
 end
 
@@ -198,11 +232,14 @@ end
 
 
 def straight_up
+  puts
   puts "~~~~~~~~~~~~~~~~~~~~~~~~ Straight Up ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   puts
   puts "This is the riskiest bet in Roulette"
   puts "Pick any single number between 1 and 36, 0 (zero), or 00 (double zero)"
+  puts
   puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  puts
   puts "The odds really suck for you when you do this but ok, what's your pick?"
   print "> "
   @num_bet = gets.to_i
@@ -214,8 +251,9 @@ def straight_up
 end
 
 def num_win
-  @bet = @bet * 3.0
+  @bet = @bet * 5.0
   @player_money = @player_money + @bet
+  puts
   puts "$$$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$$$ CASH $$$$"
   puts "Incredible, you win! You are the roulette master!"
   puts "Make it Rain!! You just tripled your cash!!"
@@ -226,8 +264,9 @@ def num_win
 end
 
 def num_lose
-  @bet = @bet / 3.0
+  @bet = @bet / 5.0
   @player_money = @player_money - @bet
+  puts
   puts "* :( * * :( * * :( * * :( * * :( * * :( *"
   puts "Yeah obviously you lost, that's the dumbest bet you can make."
   puts "Like, damn... You're down to $#{@bet}."
@@ -239,11 +278,16 @@ end
 #---------------------------------------------------------------------------------------
 
 def split
+  puts
   puts "+++++++++++++++++++++++++++ Split Bet ++++++++++++++++++++++++++++++"
   puts
   puts "With this bet you marginally increase your odds by picking any two numbers."
   puts "If the ball lands in either of those pockets, you win!"
+  puts
+  puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+  puts
   puts "Pick your first number between 1 and 36, don't forget you can pick 0 (zero) or 00 (double zero) too."
+  puts
   print "> "
   first_num = gets.to_i
   puts "Now pick your second number"
@@ -261,22 +305,28 @@ end
 def split_win
   @bet = @bet * 2.0
   @player_money = @player_money + @bet
+  puts
   puts "Daaaang, you won! You got $#{@bet}!"
 end
 
 def split_lose
   @bet = @bet / 2.0
   @player_money = @player_money - @bet
+  puts
   puts "You lost, I mean it is gambling.  You now have $#{@bet}."
 end
 
 #--------------------------------------------------------------------------------------
 
 def street
+  puts
   puts "---------------------------- Street Bet ----------------------------"
   puts
   puts "With this bet you slightly increase your odds by picking any three numbers."
   puts "If the ball lands in any of those pockets, you win!"
+  puts
+  puts "--------------------------------------------------------------------"
+  puts
   puts "Pick your first number between 1 and 36, don't forget you can pick 0 (zero) or 00 (double zero) too."
   print "> "
   first_num = gets.to_i
@@ -299,6 +349,7 @@ end
 def street_win
   @bet = @bet * 3.0
   @player_money = @player_money + @bet
+  puts
   puts "That's pretty crazy, you actually won"
   puts "How does that $#{@bet} feel, winner?"
 end
@@ -306,16 +357,21 @@ end
 def street_lose
   @bet = @bet / 3.0
   @player_money = @player_money - @bet
+  puts
   puts "Bummer you lost pretty hard!"
   puts "You're down to $#{@bet}."
 end
 
 #--------------------------------------------------------------------------------------
 def corner
+  puts
   puts "``````````````````````````` Corner Bet `````````````````````````````"
   puts 
   puts "With this bet you slightly increase your odds by picking any four numbers"
   puts "If the ball lands in any of those pockets, you win!"
+  puts
+  puts "````````````````````````````````````````````````````````````````````"
+  puts
   puts "Pick your first number between 1 and 36, don't forget you can pick 0 (zero) or 00 (double zero) too."
   print "> "
   first_num = gets.to_i
@@ -342,15 +398,21 @@ end
 def corner_win
   @bet = @bet * 4.0
   @player_money = @player_money + @bet
+  puts
   puts "Woot woot!  You got some buuuucks! You're at $#{@bet}!"
 end
 
 def corner_lose
   @bet = @bet / 4.0
   @player_money = @player_money - @bet
+  puts
   puts "Crash and burn, well you suck.  You're down to $#{@bet}."
 end
 
+def net_money
+  @player_money  
 end
 
-#Roulette.new(1)
+end
+
+# Roulette.new(1)
