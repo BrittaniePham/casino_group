@@ -353,4 +353,4 @@ end
 
 end
 
-Roulette.new(1)
+#Roulette.new(1)
