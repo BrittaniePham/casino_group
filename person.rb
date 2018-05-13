@@ -78,6 +78,7 @@ class Person
       casino_floor
     else
       puts "invalid choice, please choose again."
+      play_casino_war_again
     end
   end
 
@@ -86,7 +87,21 @@ class Person
 
     @bet = gets.to_f
     roulette = Roulette.new(@bet)
+    play_roulette_again
 
+  end
+
+  def play_roulette_again
+    puts "Would you like to play Roulette again? Y/N"
+    play_again = gets.strip.downcase
+    if play_again == "y"
+      play_roulette
+    elsif play_again == 'n'
+      casino_floor
+    else
+      puts "Invalid choice, please choose again."
+      play_roulette_again
+    end
   end
 
   def bet_condition
