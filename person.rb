@@ -34,7 +34,7 @@ class Person
     puts "1) Roulette"
     puts "2) Casino War"
     puts "3) Black or Red"
-    puts "4) Slots"
+    puts "4) $1 Slots"
     puts "5) Show wallet balance"
     puts "6) Cash out and leave"
     answer = gets.strip.to_i
@@ -46,7 +46,7 @@ class Person
     when 3
       puts "under construction"
     when 4
-      puts "under construction"
+      play_slots
     when 5
       @person_wallet.show_wallet
       choose_game
@@ -106,8 +106,23 @@ class Person
   end
 
   def play_slots
+    @person_wallet.show_wallet
     spin_slots = SlotMachine.new
+    @person_wallet.win_wallet(spin_slots.winnings)
+    play_slots_again
+  end
 
+  def play_slots_again
+    puts "Would you like to play $1 Slots again? Y/N"
+    play_again = gets.strip.downcase
+    if play_again == 'y'
+      play_slots
+    elsif play_again =='n'
+      casino_floor
+    else
+      puts "Invalid choice, please choose again."
+      play_slots_again
+    end
   end
 
   def bet_condition

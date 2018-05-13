@@ -395,12 +395,16 @@ class SlotMachineDisplay
     puts result
     case result
     when @seven_seven_seven
+      puts "You win $15.00!"
       return 1
     when @star_star_star
+      puts "You win $10.00!"
       return 2
     when @plus_plus_plus
+      puts "You win $5.00!"
       return 3
     else
+      puts "You lose!"
       return 0
     end
   end

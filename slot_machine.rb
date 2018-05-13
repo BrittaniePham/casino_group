@@ -1,7 +1,7 @@
 require_relative 'slot_machine_display'
 
 class SlotMachine
-  def initialize(wallet)
+  def initialize
     play_slot
   end
 
@@ -17,10 +17,11 @@ class SlotMachine
     when 1
       return 15
     when 2
-      return 8
+      return 10
     when 3
-      return 4
+      return 5
     end
+  end
 
  
 
