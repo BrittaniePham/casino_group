@@ -2,6 +2,7 @@ require_relative 'wallet'
 require_relative 'casino_war'
 require_relative 'roulette'
 require_relative 'ascii_casino'
+require_relative 'slot_machine'
 require 'pry'
 
 class Person
@@ -102,6 +103,11 @@ class Person
       puts "Invalid choice, please choose again."
       play_roulette_again
     end
+  end
+
+  def play_slots
+    spin_slots = SlotMachine.new
+
   end
 
   def bet_condition
