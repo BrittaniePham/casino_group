@@ -151,7 +151,7 @@ class BlackJack
 
   def win
     puts "You have won! Your money has been doubled"
-    @bet += @bet
+    @bet
   end
 
   def lose
