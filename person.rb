@@ -16,7 +16,7 @@ class Person
     puts "You find yourself in a casino and you have a massive gambling problem"
     puts "Please enter your name"
     person_name = gets.strip
-    puts "You currently have $100 in your pocket"
+    puts "Welcome #{person_name}, you currently have $100 in your pocket"
     puts "Are you ready to begin? Y/N"
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     gets.strip.downcase == "y" ? choose_game : (puts "K let's start over" ; initialize)
