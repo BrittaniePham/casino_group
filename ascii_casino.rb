@@ -3,6 +3,7 @@ class Banner
 
 
   def initialize
+    puts `clear`
        
                  banner = %q(
 
