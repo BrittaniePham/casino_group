@@ -8,7 +8,7 @@ class Wallet
   #show the current amount in player's wallet
   def show_wallet
     puts "-------------------------------"
-    puts "Your current balance is $#{@wallet}"
+    puts "Your current balance is $#{'%.2f' % @wallet}"
     puts "-------------------------------"
   end
 
@@ -24,7 +24,7 @@ class Wallet
 
   def final_wallet
     puts "----------------------------------------------------------------------------"
-    puts "Congratulations! You started with $100.00, but you are leaving with $#{@wallet}!"
+    puts "Congratulations! You started with $100.00, but you are leaving with $#{'%.2f' % @wallet.round(2)}!"
     puts "----------------------------------------------------------------------------"
   end
 
