@@ -14,6 +14,8 @@ class Person
     @person_wallet = Wallet.new
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     puts "You find yourself in a casino and you have a massive gambling problem"
+    puts "Please enter your name"
+    person_name = gets.strip
     puts "You currently have $100 in your pocket"
     puts "Are you ready to begin? Y/N"
     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
