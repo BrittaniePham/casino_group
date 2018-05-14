@@ -88,6 +88,11 @@ class Person
     puts "How much would you like to bet?"
 
     @bet = gets.to_f
+    if @bet > @person_wallet.wallet
+      puts "Sorry, you don't have that much money left..."
+      puts "Please bet a smaller amount\n\n" 
+      play_roulette 
+    end
     roulette = Roulette.new(@bet)
     @person_wallet.win_wallet(roulette.net_money)
     play_roulette_again
@@ -110,6 +115,11 @@ class Person
   def play_blackjack
     puts "How much would you like to bet?"
     @bet = gets.to_f
+    if @bet > @person_wallet.wallet
+      puts "Sorry, you don't have that much money left..."
+      puts "Please bet a smaller amount\n\n" 
+      play_blackjack 
+    end
     blackjack = BlackJack.new(@bet)
     @person_wallet.win_wallet(blackjack.return_money)
     play_blackjack_again

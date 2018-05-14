@@ -139,8 +139,12 @@ class BlackJack
       choice = gets.strip.downcase
       if choice == 'h'
         draw_card_player(@score)
-      else
+      elsif choice == 's'
         dealer_turn
+      else
+        puts "Not a valid choice"
+        puts "Please type H for hit or S for stay"
+        hit_or_stay
       end
     end
   end
